@@ -1,6 +1,6 @@
 const options = {
   targetSelector: "#scene",
-  width: 800,
+  width: screen.width,
   height: 600,
   backgroundColor: 0x222222,
 };
@@ -22,7 +22,7 @@ camera.position.x = 3.5;
 camera.position.y = 10;
 camera.position.z = 15;
 
-const light = new THREE.HemisphereLight(0xffffff, 0x080820, 0.2);
+const light = new THREE.HemisphereLight(0xffffff, 0x080820, 0.9);
 
 scene.add(light);
 
@@ -43,3 +43,4 @@ const x3 = new THREEx3(
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.physicallyCorrectLights = true;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
