@@ -10,19 +10,21 @@ scene.add(cube);
 
 const floor = new THREE.Mesh(
   new THREE.PlaneBufferGeometry(10, 10),
-  new THREE.MeshLambertMaterial({ color: 0xffffff, side: THREE.DoubleSide })
+  new THREE.MeshPhongMaterial({ color: 0xffffff, side: THREE.DoubleSide })
 );
 
 floor.receiveShadow = true;
 floor.rotation.x = THREE.Math.degToRad(-90);
 scene.add(floor);
 
-const shadowLight = new THREE.PointLight(0xffffff, 0.3, 1000); //color, intensity, distance, decay
-shadowLight.position.y = 3;
+const shadowLight = new THREE.SpotLight(0xffffff, 2, 6, 0.5);
+shadowLight.position.y = 5;
 shadowLight.castShadow = true;
+shadowLight.target = cube;
 scene.add(shadowLight);
 
-x3.add(shadowLight, { helper: { visible: false } });
+x3.add(shadowLight, { helper: false });
+x3.add(cube);
 
 renderer.setAnimationLoop(() => {
   x3.tick();

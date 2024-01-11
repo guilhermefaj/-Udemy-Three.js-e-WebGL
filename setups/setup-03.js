@@ -19,8 +19,8 @@ scene.background = new THREE.Color(options.backgroundColor);
 const camera = new THREE.PerspectiveCamera(50, options.width / options.height);
 
 camera.position.x = 3.5;
-camera.position.y = 3.5;
-camera.position.z = 8.5;
+camera.position.y = 10;
+camera.position.z = 15;
 
 const light = new THREE.HemisphereLight(0xffffff, 0x080820, 0.2);
 
@@ -41,3 +41,5 @@ const x3 = new THREEx3(
 );
 
 renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.physicallyCorrectLights = true;
